@@ -1,37 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".faceFeature">
 
     <ImageView
-        android:id="@+id/homeImg"
+        android:id="@+id/reload"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/reload"
+        android:contentDescription="Image Button for Reload"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="@font/oknoted"
+        android:text="Let's Explore" />
+
+    <TextView
+        android:id="@+id/imgCaptured"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textSize="15sp"
+        android:layout_marginHorizontal="5dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:text="Image Captured: " />
+
+    <ImageView
+        android:id="@+id/imageAfterProcessing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/home"
+        android:layout_weight="1"
+        android:layout_marginTop="2dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:backgroundTint="?android:windowBackground"
+        android:src="@drawable/no_image" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/faceBtn"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ResultBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeImg" />
+        android:layout_margin="15dp"
+        android:theme="@style/Theme.FaceFusion.cardview"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:backgroundTint="?android:windowBackground">
 
-    <Button
-        android:id="@+id/textBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="323dp"
-        android:gravity="end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeImg" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/block_solid"
+                android:text="Results:"
+                android:layout_marginTop="10dp"
+                android:textColor="?android:colorBackground"
+                android:layout_marginStart="10dp" />
+
+            <TextView
+                android:id="@+id/textResultMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:textSize="10sp"
+                android:textColor="?android:textColor"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/block_solid"
+                android:textStyle="bold"
+                android:text="Image Captured: " />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

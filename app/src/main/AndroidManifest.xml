@@ -5,6 +5,12 @@
     <uses-feature
         android:name="android.permission.CAMERA"
         android:requiredFeature="true" />
+    <uses-feature
+
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"

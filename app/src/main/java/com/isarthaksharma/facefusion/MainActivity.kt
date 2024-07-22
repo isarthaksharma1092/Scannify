@@ -1,19 +1,13 @@
 package com.isarthaksharma.facefusion
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
-import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.face.FaceDetection
-import com.google.mlkit.vision.face.FaceDetector
-import com.google.mlkit.vision.face.FaceDetectorOptions
+
 import com.isarthaksharma.facefusion.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +22,8 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             homeBinding.faceBtn.setOnClickListener {
-                Toast.makeText(this,"Face Capture",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Let's Capture",Toast.LENGTH_LONG).show()
+                startActivity(Intent(this,faceFeature::class.java))
             }
 
             homeBinding.textBtn.setOnClickListener {

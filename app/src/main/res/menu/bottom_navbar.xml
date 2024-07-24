@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Erase"
+        android:icon="@drawable/icon_eraser"
+
+        android:id="@+id/Erase" />
+
+    <item
+        android:title="Camera"
+        android:icon="@drawable/icon_camera"
+        android:id="@+id/camera"/>
+
+    <item
+        android:title="Copy"
+        android:icon="@drawable/icon_copy"
+        android:id="@+id/copy_content"/>
+</menu>

@@ -9,21 +9,27 @@
     android:layout_height="match_parent"
     tools:context=".faceFeature">
 
-    <ImageView
-        android:id="@+id/reload"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/reload"
-        android:contentDescription="Image Button for Reload"
-        android:layout_margin="15dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="@font/oknoted"
-        android:text="Let's Explore" />
+        <ImageView
+            android:id="@+id/reload"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/reload"
+            android:contentDescription="Image Button for Reload"
+            android:layout_margin="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/gatte_modern_medium"
+            android:text="Let's Explore" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/imgCaptured"

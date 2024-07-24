@@ -6,11 +6,10 @@
         android:name="android.permission.CAMERA"
         android:requiredFeature="true" />
     <uses-feature
-
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -22,19 +21,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FaceFusion"
         tools:targetApi="31">
+
         <activity
-            android:name=".faceFeature"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.FaceFusion"
+            android:name=".splashScreen"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TextFeature"
+            android:exported="false" />
+        <activity
+            android:name=".faceFeature"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.FaceFusion">
         </activity>
     </application>
 

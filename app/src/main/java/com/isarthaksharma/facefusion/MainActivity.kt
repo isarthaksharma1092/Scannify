@@ -22,12 +22,13 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             homeBinding.faceBtn.setOnClickListener {
-                Toast.makeText(this,"Let's Capture",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Let's Capture some Faces",Toast.LENGTH_LONG).show()
                 startActivity(Intent(this,faceFeature::class.java))
             }
 
             homeBinding.textBtn.setOnClickListener {
-                Toast.makeText(this,"Text Capture",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Let's Capture some Texts",Toast.LENGTH_LONG).show()
+                startActivity(Intent(this,TextFeature::class.java))
             }
             insets
         }

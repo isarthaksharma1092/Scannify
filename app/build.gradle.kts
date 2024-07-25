@@ -16,7 +16,7 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "2.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,6 +29,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures{
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -51,5 +55,18 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.google.mlkit:face-detection:16.1.6")
+
+    // Text Reorganization
+
+    // To recognize Latin script
+    implementation ("com.google.mlkit:text-recognition:16.0.0")
+    // To recognize Chinese script
+    implementation ("com.google.mlkit:text-recognition-chinese:16.0.0")
+    // To recognize Devanagari script
+    implementation ("com.google.mlkit:text-recognition-devanagari:16.0.0")
+    // To recognize Japanese script
+    implementation ("com.google.mlkit:text-recognition-japanese:16.0.0")
+    // To recognize Korean script
+    implementation ("com.google.mlkit:text-recognition-korean:16.0.0")
 
 }

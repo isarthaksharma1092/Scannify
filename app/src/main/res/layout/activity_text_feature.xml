@@ -7,13 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".TextFeature">
 
-    <ImageView
-        android:id="@+id/reload"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/reload"
-        android:contentDescription="Image Button for Reload"
-        android:layout_margin="15dp" />
 
     <TextView
         android:id="@+id/textResultMsg"
@@ -27,15 +20,30 @@
         android:layout_marginTop="10dp"
         android:gravity="center"/>
 
-
+    <TextView
+        android:id="@+id/clickOpenGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:text="Click here to pick from gallery"
+        android:textColor="@color/blue"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        />
 
     <EditText
         android:id="@+id/editTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No text was found"
+        android:hint="Click here to pick from gallery"
+
+        android:visibility="gone"
+
+        android:textColorHint="@color/blue"
         android:focusable="true"
+        android:background="@null"
         android:focusableInTouchMode="true"
         android:cursorVisible="false"
         android:longClickable="true"

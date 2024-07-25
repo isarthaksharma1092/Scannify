@@ -26,9 +26,6 @@ class faceFeature : AppCompatActivity() {
             insets
         }
         accessCamera()
-        faceBinding.reload.setOnClickListener {
-            accessCamera()
-        }
     }
 
     private fun accessCamera() {

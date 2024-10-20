@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SelectedPhotoAccess">
 
-    <uses-feature
-        android:name="android.permission.CAMERA"
-        android:requiredFeature="true" />
+
+<!--    user Permission-->
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
+        android:required="false" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+
+
 
     <application
         android:allowBackup="true"
@@ -22,28 +29,41 @@
         android:theme="@style/Theme.FaceFusion"
         tools:targetApi="31">
 
+<!--        splash Screen-->
         <activity
             android:name=".splashScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        Text Scanner-->
         <activity
             android:name=".TextFeature"
+            android:screenOrientation="portrait"
             android:exported="false" />
+
+<!--        Face Scanner-->
         <activity
             android:name=".faceFeature"
-            android:exported="false" />
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="face"/>
+
+<!--        Home Screen-->
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.FaceFusion">
         </activity>
-    </application>
 
+    </application>
 </manifest>

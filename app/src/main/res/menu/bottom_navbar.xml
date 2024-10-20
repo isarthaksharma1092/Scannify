@@ -8,7 +8,7 @@
 
     <item
         android:title="Camera"
-        android:icon="@drawable/icon_camera"
+        android:icon="@drawable/icon_selector"
         android:id="@+id/camera"/>
 
     <item

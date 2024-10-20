@@ -23,13 +23,13 @@
         android:layout_weight="1"/>
 
     <ImageView
-        android:id="@+id/cameraBtn"
+        android:id="@+id/inputChoice"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:padding="12dp"
         android:clickable="true"
         android:background="@drawable/bottom_selected_text"
-        android:src="@drawable/icon_camera"/>
+        android:src="@drawable/icon_selector"/>
 
     <Space
         android:layout_width="wrap_content"

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TextFeature">
+
+    <TextView
+        android:id="@+id/textResultMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image to Text"
+        android:textSize="32sp"
+        android:fontFamily="@font/gatte_modern_medium"
+        android:textColor="?android:textColor"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:background="?android:textColor"
+
+        app:layout_constraintTop_toBottomOf="@id/textResultMsg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar">
+
+        <!-- ScrollView to allow text scrolling within the CardView -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Uneditable EditText inside CardView -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/clickOpenGallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:text="Click here to pick from gallery"
+                    android:layout_gravity="center"
+                    android:textColor="@color/blue"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="No text was found !"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:textColorHint="@color/blue"
+                    android:focusable="false"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:longClickable="false"
+                    android:textIsSelectable="true"
+                    android:inputType="none"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <include
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        layout="@layout/bottom_navigation_text"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

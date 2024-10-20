@@ -16,7 +16,7 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "2.5.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,6 +29,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures{
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -50,6 +54,28 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.google.mlkit:face-detection:16.1.6")
+
+    // Face detection ML
+    implementation ("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
+
+    // Text Reorganization ML
+    val text_version = "16.0.1"
+    implementation ("com.google.mlkit:text-recognition:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-chinese:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-devanagari:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-japanese:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-korean:${text_version}")
+
+    // CameraX
+    val camerax_version = "1.5.0-alpha02"
+    implementation("androidx.camera:camera-core:${camerax_version}")
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-video:${camerax_version}")
+    implementation("androidx.camera:camera-view:${camerax_version}")
+    implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
+    implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+
 
 }

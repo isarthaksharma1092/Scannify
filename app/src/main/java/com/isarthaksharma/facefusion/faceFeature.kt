@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.Telephony.Mms.Part.FILENAME
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -19,17 +18,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.LifecycleCameraController
-import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.LifecycleOwner
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
@@ -38,7 +33,6 @@ import com.isarthaksharma.facefusion.databinding.ActivityFaceFeatureBinding
 import com.isarthaksharma.facefusion.databinding.CameraLayoutBinding
 import java.io.File
 import java.io.IOException
-import java.nio.file.Files.createFile
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -57,16 +51,10 @@ class faceFeature : AppCompatActivity() {
         faceBinding = ActivityFaceFeatureBinding.inflate(layoutInflater)
         setContentView(faceBinding.root)
 
-        // Make the status bar transparent
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = android.graphics.Color.TRANSPARENT
-        }
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window, faceBinding.root).apply {
-            hide(WindowInsetsCompat.Type.systemBars())
-            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false
+        )
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -231,23 +219,6 @@ class faceFeature : AppCompatActivity() {
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //Gallery Permission and Selection
     //if greater than android 13 use ReadMediaImages else use External storage
-//    private fun launchGallery() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this,
-//                    arrayOf(Manifest.permission.READ_MEDIA_IMAGES), storagePermissionCode)
-//            } else {
-//                imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-//            }
-//        } else {
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this,
-//                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), storagePermissionCode)
-//            } else {
-//                imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-//            }
-//        }
-//    }
     private fun launchGallery() {
         val permission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             Manifest.permission.READ_MEDIA_IMAGES
@@ -265,8 +236,6 @@ class faceFeature : AppCompatActivity() {
         imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
-
-
     // image Picker
     private val imagePicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri->
         if(uri != null){
@@ -274,6 +243,7 @@ class faceFeature : AppCompatActivity() {
             faceBinding.imageSelect.visibility = View.GONE
             processImageUri(uri)
             Toast.makeText(this, "Processing Image.......", Toast.LENGTH_SHORT).show()
+            faceBinding.CaptureHeading.visibility = View.VISIBLE
             faceBinding.imageAfterProcessing.setImageURI(uri)
             faceBinding.imageAfterProcessing.visibility = View.VISIBLE
             faceBinding.ResultBox.visibility = View.VISIBLE
@@ -281,7 +251,6 @@ class faceFeature : AppCompatActivity() {
             Toast.makeText(this,"No Image was selected",Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
     // Camera & Storage
@@ -348,7 +317,6 @@ class faceFeature : AppCompatActivity() {
                     faceBinding.textResultMsg.text = "NO FACE was detected\nPlease Retry"
                 } else {
                     faceBinding.textResultMsg.text = resultText
-                    Toast.makeText(this, resultText, Toast.LENGTH_LONG).show()
                 }
             }
             .addOnFailureListener { e ->

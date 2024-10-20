@@ -231,23 +231,6 @@ class faceFeature : AppCompatActivity() {
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //Gallery Permission and Selection
     //if greater than android 13 use ReadMediaImages else use External storage
-//    private fun launchGallery() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this,
-//                    arrayOf(Manifest.permission.READ_MEDIA_IMAGES), storagePermissionCode)
-//            } else {
-//                imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-//            }
-//        } else {
-//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this,
-//                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), storagePermissionCode)
-//            } else {
-//                imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-//            }
-//        }
-//    }
     private fun launchGallery() {
         val permission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             Manifest.permission.READ_MEDIA_IMAGES
@@ -265,8 +248,6 @@ class faceFeature : AppCompatActivity() {
         imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
-
-
     // image Picker
     private val imagePicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri->
         if(uri != null){
@@ -274,6 +255,7 @@ class faceFeature : AppCompatActivity() {
             faceBinding.imageSelect.visibility = View.GONE
             processImageUri(uri)
             Toast.makeText(this, "Processing Image.......", Toast.LENGTH_SHORT).show()
+            faceBinding.CaptureHeading.visibility = View.VISIBLE
             faceBinding.imageAfterProcessing.setImageURI(uri)
             faceBinding.imageAfterProcessing.visibility = View.VISIBLE
             faceBinding.ResultBox.visibility = View.VISIBLE
@@ -281,7 +263,6 @@ class faceFeature : AppCompatActivity() {
             Toast.makeText(this,"No Image was selected",Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
     // Camera & Storage
@@ -348,7 +329,6 @@ class faceFeature : AppCompatActivity() {
                     faceBinding.textResultMsg.text = "NO FACE was detected\nPlease Retry"
                 } else {
                     faceBinding.textResultMsg.text = resultText
-                    Toast.makeText(this, resultText, Toast.LENGTH_LONG).show()
                 }
             }
             .addOnFailureListener { e ->

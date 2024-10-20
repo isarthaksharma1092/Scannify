@@ -16,7 +16,7 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "2.1.0"
+        versionName = "2.5.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,19 +54,28 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.google.mlkit:face-detection:16.1.6")
 
-    // Text Reorganization
+    // Face detection ML
+    implementation ("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
 
-    // To recognize Latin script
-    implementation ("com.google.mlkit:text-recognition:16.0.0")
-    // To recognize Chinese script
-    implementation ("com.google.mlkit:text-recognition-chinese:16.0.0")
-    // To recognize Devanagari script
-    implementation ("com.google.mlkit:text-recognition-devanagari:16.0.0")
-    // To recognize Japanese script
-    implementation ("com.google.mlkit:text-recognition-japanese:16.0.0")
-    // To recognize Korean script
-    implementation ("com.google.mlkit:text-recognition-korean:16.0.0")
+    // Text Reorganization ML
+    val text_version = "16.0.1"
+    implementation ("com.google.mlkit:text-recognition:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-chinese:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-devanagari:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-japanese:${text_version}")
+    implementation ("com.google.mlkit:text-recognition-korean:${text_version}")
+
+    // CameraX
+    val camerax_version = "1.5.0-alpha02"
+    implementation("androidx.camera:camera-core:${camerax_version}")
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-video:${camerax_version}")
+    implementation("androidx.camera:camera-view:${camerax_version}")
+    implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
+    implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+
 
 }

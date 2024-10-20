@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.Telephony.Mms.Part.FILENAME
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -19,17 +18,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.LifecycleCameraController
-import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.LifecycleOwner
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
@@ -38,7 +33,6 @@ import com.isarthaksharma.facefusion.databinding.ActivityFaceFeatureBinding
 import com.isarthaksharma.facefusion.databinding.CameraLayoutBinding
 import java.io.File
 import java.io.IOException
-import java.nio.file.Files.createFile
 import java.text.SimpleDateFormat
 import java.util.Locale
 

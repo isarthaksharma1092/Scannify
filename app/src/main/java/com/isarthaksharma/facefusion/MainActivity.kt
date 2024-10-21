@@ -1,18 +1,12 @@
 package com.isarthaksharma.facefusion
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.PackageManagerCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 import com.isarthaksharma.facefusion.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +15,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Thread.sleep(1500)
+        installSplashScreen()
         enableEdgeToEdge()
+
         homeBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(homeBinding.root)
 
@@ -38,8 +36,5 @@ class MainActivity : AppCompatActivity() {
         homeBinding.textBtn.setOnClickListener {
             startActivity(Intent(this, TextFeature::class.java))
         }
-
-
     }
-
 }

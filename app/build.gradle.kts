@@ -76,6 +76,8 @@ dependencies {
     implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
     implementation("androidx.camera:camera-extensions:${camerax_version}")
 
+    //splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
 
 
 }

@@ -26,4 +26,10 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:windowBackground">@color/black</item>
     </style>
+
+    <style name="Theme.FaceFusion.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.FaceFusion</item>
+    </style>
 </resources>
